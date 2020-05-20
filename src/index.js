@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider} from 'react-redux';
+import { createStore, applyMiddleware, combineReducers} from 'redux';
+import { createLogger } from 'redux-logger'
+import thunkMiddleware from 'redux-thunk';
+
+import { changeInputField, changeThinkList } from './reducers'
+
 import './index.css';
-import App from './App';
+import ToThinkApp from './containers/ToThinkApp';
 import * as serviceWorker from './serviceWorker';
 
+const logger = createLogger();
+const rootReducer = combineReducers({changeInputField, changeThinkList});
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger));
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store = {store}>
+    <ToThinkApp />
+  </Provider>,
   document.getElementById('root')
 );
 

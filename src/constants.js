@@ -1,0 +1,3 @@
+export const SET_INPUT_FIELD = 'SET_INPUT_FIELD';
+export const ADD_THINK_ITEM = 'ADD_THINK_ITEM';
+export const REMOVE_THINK_ITEM = 'REMOVE_THINK_ITEM';
